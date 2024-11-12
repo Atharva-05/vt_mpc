@@ -1,0 +1,10 @@
+budget: 25
+v_max: 3.0
+a_max: 1.5
+dt_min: 0.1
+dt_max: 0.5
+t_step: 0.3
+c_b: 0.05
+r_term: 0.0001
+n_runs: 1
+instance: tsiligirides_2_3d

@@ -198,6 +198,14 @@ class mpcOfflinePlanner():
         try:           
             self.mpc.u0 = self.mpc.make_step(self.x0)
             self.mpc_data = self.mpc.data
+
+            # Checks if optimization was successful            
+            success = self.mpc.data['success']
+            print('Optimizer run returned success value: ' + str(success[-1][0]))
+            if not success[-1][0]:
+                print('Returning due to optimization failure.')
+                return
+            
             time_predicted = self.mpc.data.prediction(('_x', 't_sum')).flatten()
             print('Total time of flight {} [s]'.format(time_predicted[-1]))
             uav_pos = self.mpc.data.prediction(('_x', 'uav_pos'))
